@@ -11,7 +11,6 @@ namespace Text.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //comment
             return View();
         }
         public ActionResult AboutUs()
