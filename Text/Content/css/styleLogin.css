@@ -590,3 +590,7 @@ label.valid {
     margin-bottom: 10px; } }
 
 /*# sourceMappingURL=style.css.map */
+
+.validateLogin{
+    color:red;
+}

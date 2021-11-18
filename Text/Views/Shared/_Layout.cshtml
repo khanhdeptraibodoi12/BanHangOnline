@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Text.Models;
+@{ 
+    Member user = (Member)Session["UserLogin"];
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -74,8 +78,16 @@
 
                         <ul class="top-bar-acc">
                             <li class="top-bar-link"><a href="#">My Wishlist</a></li>
-                            <li class="top-bar-link"><a href="#">Newsletter</a></li>
-                            <li class="top-bar-link"><a href="~/User/Login">Login</a></li>
+
+                            @if (Session["UserLogin"] != null)
+                            {
+                                <li class="top-bar-link"><a href="~/User/LogOut">LogOut</a></li>
+                                <li class="top-bar-link"><p>@user.userName</p></li>
+                            }
+                            else
+                            {
+                                <li class="top-bar-link"><a href="~/User/Login">Login</a></li>
+                            }
                         </ul>
 
                     </div>
@@ -113,7 +125,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> <!-- end navbar-header -->   
+                            </div> <!-- end navbar-header -->
                             <div class="nav-wrap flex-child">
                                 <div class="collapse navbar-collapse text-center" id="navbar-collapse">
 
@@ -156,7 +168,7 @@
                                                                     <li>
                                                                         <span>Shop Pages</span>
                                                                     </li>
-                                                     
+
                                                                     <li><a href="~/Product/ShopCatolog">Catalog With Sidebar</a></li>
                                                                     <li><a href="~/Product/ShopDetail">Single Product</a></li>
                                                                     <li><a href="~/handlerCart/Cart">Cart</a></li>
@@ -421,7 +433,6 @@
 
         </div> <!-- end content wrapper -->
     </main> <!-- end main wrapper -->
-
     <!-- jQuery Scripts -->
     <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
     <script type="text/javascript" src="~/Content/js/bootstrap.min.js"></script>

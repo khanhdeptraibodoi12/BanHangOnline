@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -119,6 +127,7 @@
     <Content Include="Content\fonts\ui-icons.svg" />
     <Content Include="Content\img\apple-touch-icon-114x114.png" />
     <Content Include="Content\img\apple-touch-icon-72x72.png" />
+    <Content Include="Content\img\Avatar\Avatar.jpg" />
     <Content Include="Content\img\blog\author.jpg" />
     <Content Include="Content\img\blog\blog_1.jpg" />
     <Content Include="Content\img\blog\blog_2.jpg" />
@@ -217,6 +226,16 @@
     <Content Include="Content\js\scripts.js" />
     <Content Include="Content\js\twitterFetcher_min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Mydb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Mydb.Context.cs</LastGenOutput>
+      <DependentUpon>Mydb.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Mydb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mydb.edmx</DependentUpon>
+      <LastGenOutput>Mydb.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +247,61 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Article.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Encrytor.cs" />
+    <Compile Include="Models\Invoince.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InvoinceDetail.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Member.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mydb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mydb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mydb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mydb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mydb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductCategory.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Slide.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vDoanhThuTheoNgay.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vHoaDonTrongNgay.cs">
+      <DependentUpon>Mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -329,6 +403,13 @@
     <Content Include="Content\fonts\poppins\roboto-condensed-v16-latin-regular.woff" />
     <Content Include="Content\fonts\poppins\roboto-condensed-v16-latin-regular.woff2" />
     <Content Include="Content\css\styleLogin.css.map" />
+    <EntityDeploy Include="Models\Mydb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Mydb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Mydb.edmx.diagram">
+      <DependentUpon>Mydb.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -354,7 +435,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

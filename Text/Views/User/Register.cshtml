@@ -9,22 +9,44 @@
         <div class="signup-content">
             <div class="signup-form">
                 <h2 class="form-title">Sign up</h2>
-                <form method="POST" class="register-form" id="register-form">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "validateLogin" })
                     <div class="form-group">
-                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="name" id="name" placeholder="Your Name" />
+                        <label for="userName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="userName" id="userName" placeholder="UserName" required />
                     </div>
                     <div class="form-group">
-                        <label for="email"><i class="zmdi zmdi-email"></i></label>
-                        <input type="email" name="email" id="email" placeholder="Your Email" />
+                        <label for="password"><i class="zmdi zmdi-email"></i></label>
+                        <input type="password" name="password" id="password" placeholder="PassWord" required />
                     </div>
                     <div class="form-group">
-                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                        <input type="password" name="pass" id="pass" placeholder="Password" />
+                        <label for="firstName]"><i class="zmdi zmdi-lock"></i></label>
+                        <input type="text" name="firstName" id="firstName" placeholder="FirstName" required />
                     </div>
                     <div class="form-group">
-                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                        <label for="lastName"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="text" name="lastName" id="lastName" placeholder="Lastname" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="number" name="phone" id="phone" placeholder="Phone" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="address"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="text" name="address" id="address" placeholder="Your Address" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="date" name="birthday" id="birthday" placeholder="Email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="email" name="email" id="email" placeholder="Email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="identityNumber"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="text" name="IdentityNumber" id="IdentityNumber" placeholder="Your IdentityNumber" required />
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -33,7 +55,7 @@
                     <div class="form-group form-button">
                         <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
                     </div>
-                </form>
+                }
             </div>
             <div class="signup-image">
                 <figure><img src="~/Content/img/login/signin-image.jpg" alt="sing up image"></figure>
