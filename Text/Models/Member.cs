@@ -11,9 +11,10 @@ namespace Text.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Member
-    {
+    {   
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Member()
         {
@@ -21,7 +22,7 @@ namespace Text.Models
             this.Invoinces = new HashSet<Invoince>();
             this.Products = new HashSet<Product>();
         }
-    
+
         public string userName { get; set; }
         public string password { get; set; }
         public string firstName { get; set; }

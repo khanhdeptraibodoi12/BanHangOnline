@@ -12,7 +12,6 @@ namespace Text.Controllers
         // GET: User
         public ActionResult Login()
         {
-            //.
             
             return View();
         }
@@ -48,7 +47,7 @@ namespace Text.Controllers
         public ActionResult Register(Member member)
         {   
             if(ModelState.IsValid)
-            {
+            {   //truy van kieu methos
                 var Check =  db.Members.Where(m => m.userName ==member.userName).SingleOrDefault();
                 if (Check != null)
                 {

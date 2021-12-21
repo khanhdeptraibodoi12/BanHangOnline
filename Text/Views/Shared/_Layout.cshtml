@@ -10,7 +10,7 @@
     <title>Home page</title>
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,400i,600,700' rel='stylesheet'>
-
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' rel='stylesheet'>
     <!-- Css -->
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Content/css/magnific-popup.css" />
@@ -40,12 +40,13 @@
             <div class="search-wrap">
                 <div class="search-inner">
                     <div class="search-cell">
-                        <form method="get">
+                        @using (Html.BeginForm("ShopCatalog","Product", FormMethod.Get))
+                        {
                             <div class="search-field-holder">
-                                <input type="search" class="form-control main-search-input" placeholder="Search for">
+                                <input type="search" name="searching" class="form-control main-search-input" placeholder="Search for">
                                 <i class="ui-close search-close" id="search-close"></i>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div> <!-- end fullscreen search -->
@@ -81,13 +82,13 @@
 
                             @if (Session["UserLogin"] != null)
                             {
-                                <li class="top-bar-link"><a href="~/User/LogOut">LogOut</a></li>
+                                <li class="top-bar-link"><img src="@Url.Content("" + user.avatar)" style="height:20px"></li>
                                 <li class="top-bar-link"><p>@user.userName</p></li>
                             }
                             else
                             {
                                 <li class="top-bar-link"><a href="~/User/Login">Login</a></li>
-                            }
+                                }
                         </ul>
 
                     </div>
@@ -207,11 +208,7 @@
                                                                     <li>
                                                                         <span>For Him</span>
                                                                     </li>
-                                                                    <li><a href="catalog.html">T-shirts</a></li>
-                                                                    <li><a href="catalog.html">Watches</a></li>
-                                                                    <li><a href="catalog.html">Belts</a></li>
-                                                                    <li><a href="catalog.html">Jeans</a></li>
-                                                                    <li><a href="catalog.html">Scarfs</a></li>
+                                                                    @Html.Action("Categories", "Product")
                                                                 </ul>
                                                             </div>
 
@@ -251,7 +248,10 @@
                             <div class="flex-child flex-right nav-right hidden-sm hidden-xs">
                                 <ul>
                                     <li class="nav-register">
-                                        <a href="#">My Account</a>
+                                        @if (Session["UserLogin"] != null)
+                                        {
+                                            <a href="@Url.Action("MyAccount", "Home")">My Account</a>
+                                        }
                                     </li>
                                     <li class="nav-search-wrap style-2 hidden-sm hidden-xs">
                                         <a href="#" class="nav-search search-trigger">

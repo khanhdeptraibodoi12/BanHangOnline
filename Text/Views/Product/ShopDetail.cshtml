@@ -1,9 +1,8 @@
-﻿
+﻿@model Text.Models.Product
 @{
     ViewBag.Title = "ShopDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <!-- Single Product -->
 <section class="section-wrap pb-40 single-product">
     <div class="container-fluid semi-fluid">
@@ -14,7 +13,7 @@
 
                     <div class="gallery-cell">
                         <a href="img/shop/item_lg_1.jpg" class="lightbox-img">
-                            <img src="~/Content/img/shop/item_lg_1.jpg" alt="" />
+                            <img src=@Url.Content(""+Model.image) alt="Image" />
                             <i class="ui-zoom zoom-icon"></i>
                         </a>
                     </div>
@@ -76,13 +75,13 @@
                         Catalog
                     </li>
                 </ol>
-                <h1 class="product-title">Sport T-Shirt</h1>
+                <h1 class="product-title">@Model.ProductCategory.categoryName</h1>
                 <span class="price">
                     <del>
-                        <span>$1550.00</span>
+                        <span>@Model.price</span>
                     </del>
                     <ins>
-                        <span class="amount">$1250.00</span>
+                        <span class="amount">@Model.productName</span>
                     </ins>
                 </span>
                 <span class="rating">
@@ -128,9 +127,9 @@
 
 
                 <div class="product_meta">
-                    <span class="sku">SKU: <a href="#">111763</a></span>
-                    <span class="brand_as">Category: <a href="#">Men T-shirt</a></span>
-                    <span class="posted_in">Tags: <a href="#">Sport, T-shirt, Blue</a></span>
+                    <span class="sku">SKU: <a href="#">@Model.ProductCategory.categoryId</a></span>
+                    <span class="brand_as">Category: <a href="#">@Model.ProductCategory.categoryName</a></span>
+                    <span class="posted_in">Tags: <a href="#">Sport, T-shirt, Blue </a></span>
                 </div>
 
                 <!-- Accordion -->
@@ -143,7 +142,7 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                Zenna Theme is a very slick and clean e-commerce template with endless possibilities. Creating an awesome website. Amadea Theme is a very slick and clean e-commerce template with endless possibilities. Creating an awesome website. I would now like to introduce you to your second mind, the hidden and mysterious subconscious.
+                                @Model.description
                             </div>
                         </div>
                     </div>

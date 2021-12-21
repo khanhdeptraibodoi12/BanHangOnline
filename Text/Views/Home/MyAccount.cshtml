@@ -1,0 +1,28 @@
+﻿@using Text.Models;
+@{
+    Member UserName = (Member)Session["UserLogin"];
+}
+@{
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h1>MyAccount</h1>
+    <a href="@Url.Action("Logout","User")" class="account-link">Log Out</a>
+    <div class="row account-content">
+        <div class="col-md-8">
+            <h2>Order History</h2>
+        </div>
+        <div class="col-md-4">
+            <h2>Account details</h2>
+            <P>@UserName.firstName</P>
+            <P>@UserName.lastName</P>
+            <P>@UserName.address</P>
+            <P>@UserName.email</P>
+            <a href=@Url.Action("ChangeAccount","Home",new { username = UserName.userName} ) class="account-link">ChangePassWord</a>
+        </div>
+    </div>
+</div>
+

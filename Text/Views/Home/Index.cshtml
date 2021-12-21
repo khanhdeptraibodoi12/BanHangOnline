@@ -1,7 +1,13 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+@{ ViewBag.Title = "Index"; }
+@if (TempData["msgChangePassword"] != null)
+{
+
+<div class="alert alert-success" role="alert" style="width: 500px; margin: 0 auto; margin-bottom: 10px;">
+    @TempData["msgChangePassword"]
+</div>}
+
+
 <!-- Hero Slider -->
 <section class="hero-wrap text-center relative">
     <div id="owl-hero" class="owl-carousel owl-theme light-arrows slider-animated">
@@ -9,7 +15,7 @@
             <div class="container">
                 <div class="hero-holder">
                     <div class="hero-message">
-                        <h1 class="hero-title nocaps">Great Fashion 2017</h1>
+                        <h1 class="hero-title nocaps">Great Fashion 2021</h1>
                         <h2 class="hero-subtitle lines">New Arrivals Collection</h2>
                         <div class="buttons-holder">
                             <a href="#" class="btn btn-lg btn-transparent"><span>Shop Now</span></a>

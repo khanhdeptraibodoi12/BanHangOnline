@@ -19,7 +19,6 @@ namespace Text.Models
         {
             this.Invoinces = new HashSet<Invoince>();
         }
-    
         public int customerId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }

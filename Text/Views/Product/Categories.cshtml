@@ -1,0 +1,11 @@
+﻿@using Text.Models
+@model List<ProductCategory>
+@{
+    Layout = null;
+}
+@foreach (var i in Model)
+{
+    <li>
+        <a href="@Url.Action("ShopCatalog","Product", new { Id = i.categoryId})">@i.categoryName</a>
+    </li>
+}
