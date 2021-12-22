@@ -1,0 +1,41 @@
+﻿@using Text.Models
+@model List<Cart>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th scope="col">Sản Phẩm</th>
+                <th scope="col">Số Lượng</th>
+                <th scope="col">Đơn Giá</th>
+                <th scope="col">Thành Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        <div style=" width : 10%" >
+                            <img src=@Url.Content("" + i.ImageItem) >
+                        </div>
+                        <div style="font-size:14px ;width : 243px">
+                            <a href="@Url.Action("ShopDetail", "Product", new { id = i.IdItem })"><h6>@i.NameItem</h6></a>
+                        </div>
+                    </th>
+                    <td>@i.Quantity</td>
+                    <td>@i.unitPrice</td>
+                    <td>$@String.Format("{0:0,0}", i.PriceItem)</td>
+                </tr>
+            }
+                <tr style="text-align:right; color:red">
+                    <td colspan="2">Số Lượng Sản Phẩm : @ViewBag.quanlityItem </td>
+                    <td colspan="2">Tổng Tiền : $@String.Format("{0:0,0}", ViewBag.totalPrice)</td>
+                </tr>
+            
+        </tbody>
+    </table>
+</div>

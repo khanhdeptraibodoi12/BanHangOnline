@@ -76,7 +76,7 @@
                                             @*<img src="~/Content/img/shop/shop_item_back_1.jpg" alt="" class="back-img">*@
                                         </a>
                                         <div class="product-label">
-                                            <span class="sale">sale</span>
+                                            <span class="sale">Sale @i.discount%</span>
                                         </div>
                                         <div class="hover-2">
                                             <div class="product-actions">
@@ -98,12 +98,26 @@
                                     </div>
 
                                     <span class="price">
-                                        <del>
-                                            <span>@i.price</span>
-                                        </del>
-                                        <ins>
-                                            <span class="amount">$159.99</span>
-                                        </ins>
+                                        @if (i.discount > 0)
+                                        {
+                                            var giaDaGiam = i.price - ((i.price * i.discount) / 100);
+                                            <del>
+                                                <span>$@i.price</span>
+                                            </del>
+                                            <ins>
+                                                <span class="amount">$@giaDaGiam</span>
+                                            </ins>
+                                        }
+                                        else 
+                                        {
+                                            var giaDaGiam = i.price - ((i.price * i.discount) / 100);
+                                            <del>
+                                                <span>$@i.price</span>
+                                            </del>
+                                            <ins>
+                                                <span class="amount">$@i.price</span>
+                                            </ins>
+                                        }
                                     </span>
 
                                     <div class="product-description">

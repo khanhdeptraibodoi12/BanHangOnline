@@ -77,11 +77,21 @@
                 </ol>
                 <h1 class="product-title">@Model.ProductCategory.categoryName</h1>
                 <span class="price">
-                    <del>
-                        <span>@Model.price</span>
-                    </del>
+                    @if (Model.discount > 0)
+                    {
+                        var GiamGia = Model.price - ((Model.price * Model.discount) / 100);
+                        <del>
+                            <span>$@GiamGia</span>
+                        </del>
+                    }
+                    else
+                    {
+                        <del>
+                            <span>$@Model.price</span>
+                        </del>
+                    }
                     <ins>
-                        <span class="amount">@Model.productName</span>
+                        <span class="amount">$@Model.productName</span>
                     </ins>
                 </span>
                 <span class="rating">
@@ -120,7 +130,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="btn btn-dark btn-lg add-to-cart"><span>Add to Cart</span></a>
+                    <a href="@Url.Action("AddToCart","Cart", new { id = Model.productId , @strURL = Request.Url.ToString() })" class="btn btn-dark btn-lg add-to-cart"><span>Add to Cart</span></a>
 
                     <a href="#" class="product-add-to-wishlist"><i class="fa fa-heart"></i></a>
                 </div>

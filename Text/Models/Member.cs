@@ -22,7 +22,6 @@ namespace Text.Models
             this.Invoinces = new HashSet<Invoince>();
             this.Products = new HashSet<Product>();
         }
-
         public string userName { get; set; }
         public string password { get; set; }
         public string firstName { get; set; }

@@ -333,6 +333,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HandlerCartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -343,6 +344,7 @@
     <Compile Include="Models\Article.cs">
       <DependentUpon>Mydb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Contact.cs">
       <DependentUpon>Mydb.tt</DependentUpon>
     </Compile>
@@ -538,6 +540,7 @@
     <Content Include="Views\Product\Brand.cshtml" />
     <Content Include="Views\Home\MyAccount.cshtml" />
     <Content Include="Views\Home\ChangeAccount.cshtml" />
+    <Content Include="Views\Cart\Cart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
