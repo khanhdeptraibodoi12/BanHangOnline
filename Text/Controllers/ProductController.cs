@@ -19,10 +19,12 @@ namespace Text.Controllers
         public ActionResult ShopCatalog(int? page, int? Id, string brand, string searching)
         {
             // bien quy dinh so san pham moi trang
-            int pageSize = 9;
+            int pageSize = 3;
             // bien so trang
             int pageNum = (page ?? 1);
-           
+            ViewBag.brand = brand;
+            ViewBag.ID = Id;
+
             if (searching != null)
             {
                 ViewBag.searching = searching;
@@ -33,13 +35,13 @@ namespace Text.Controllers
             { 
                 if (Id == null && brand != null)
                 {
-                    ViewBag.ID = Id;
+                    
                     var product = db.Products.OrderBy(m => m.dateCreate).Include(p => p.ProductCategory).Where(m => m.brand == brand).ToPagedList(pageNum, pageSize);
                     return View(product);
                 }
                 else if(Id != null && brand==null)
                 {
-                    ViewBag.brand = brand;
+                   
                     var product = db.Products.OrderBy(m => m.dateCreate).Include(p => p.ProductCategory).Where(m => m.categoryId == Id).ToPagedList(pageNum, pageSize);
                     return View(product);
                 }
@@ -66,7 +68,7 @@ namespace Text.Controllers
         {
             List<string> brand = new List<string>();
             var listbarnd = db.Products.ToList();
-            foreach(var i in db.Products)
+            foreach(var i in listbarnd)
             {
                 if (!brand.Contains(i.brand.Trim()))
                     brand.Add(i.brand.Trim());

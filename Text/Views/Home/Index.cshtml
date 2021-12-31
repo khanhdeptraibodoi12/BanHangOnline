@@ -11,7 +11,7 @@
 <!-- Hero Slider -->
 <section class="hero-wrap text-center relative">
     <div id="owl-hero" class="owl-carousel owl-theme light-arrows slider-animated">
-        <div class="hero-slide overlay" style="background-image:url(img/hero/1.jpg)">
+        <div class="hero-slide overlay" style="background-image:url(/Content/img/hero/5.jpg)">
             <div class="container">
                 <div class="hero-holder">
                     <div class="hero-message">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="hero-slide overlay" style="background-image:url(img/hero/2.jpg)">
+        <div class="hero-slide overlay" style="background-image:url(/Content/img/hero/3.jpg)">
             <div class="container">
                 <div class="hero-holder">
                     <div class="hero-message">
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div class="hero-slide overlay" style="background-image:url(img/hero/3.jpg)">
+        <div class="hero-slide overlay" style="background-image:url(/Content/img/hero/2.jpg)">
             <div class="container">
                 <div class="hero-holder">
                     <div class="hero-message">
@@ -60,7 +60,7 @@
 
             <div class="col-xs-4 col-xxs-12 mb-30 promo-banner">
                 <a href="#">
-                    <img src="~/Content/img/shop/collection_1.jpg" alt="">
+                    <img src="~/Content/img/shop/2.jpg"alt="">
                     <div class="overlay"></div>
                     <div class="promo-inner valign">
                         <h2>for her</h2>
@@ -70,8 +70,8 @@
             </div>
 
             <div class="col-xs-4 col-xxs-12 mb-30 promo-banner">
-                <a href="#">
-                    <img src="~/Content/img/shop/collection_2.jpg" alt="">
+                <a href="@Url.Action("ShopCatalog","Product",new { Id = 7 })">
+                    <img src="~/Content/img/shop/3.jpg" alt="">
                     <div class="overlay"></div>
                     <div class="promo-inner valign">
                         <h2>accessories</h2>
@@ -81,8 +81,8 @@
             </div>
 
             <div class="col-xs-4 col-xxs-12 mb-30 promo-banner">
-                <a href="#">
-                    <img src="~/Content/img/shop/collection_3.jpg" alt="">
+                <a href="@Url.Action("ShopCatalog","Product")">
+                    <img src="~/Content/img/shop/1.jpg" alt="">
                     <div class="overlay"></div>
                     <div class="promo-inner valign">
                         <h2>for him</h2>
@@ -108,8 +108,8 @@
         </div>
 
         <div class="row items-grid">
-
-            <div class="col-md-3 col-xs-6">
+            @Html.Action("ListProduct","Home")
+           @* <div class="col-md-3 col-xs-6">
                 <div class="product-item hover-trigger">
                     <div class="product-img">
                         <a href="shop-single.html">
@@ -399,7 +399,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div> <!-- end row -->
     </div>
 </section> <!-- end trendy products -->

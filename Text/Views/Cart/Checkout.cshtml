@@ -1,0 +1,31 @@
+﻿@using Text.Models
+@{ Member member = (Member)Session["UserLogin"];
+}
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Checkout</h2>
+
+<div class="container">
+    <h3>BILLDING DETAILS</h3>
+    <div class="row account-content">
+        @Html.BeginForm()
+        {
+        <div class="col-md-6">
+            <p>FIRST NAME</p>
+            <input type="text" name="firstName" value="@member.firstName" />
+            <p>LAST NAME</p>
+            <input type="text" name="lastName" value="@member.lastName" />
+            <p>ADDRESS</p>
+            <input type="text" name="address"value="@member.address" />
+            <p>PHONE</p>
+            <input type="text" name="phone"value="@member.phone" />
+            <p>EMAIL</p>
+            <input type="email" name="email"value="@member.email" />
+            <input type="submit"  class="btn btn-md btn-color mt-10" value="Submit Order" />
+        </div>
+        }
+    </div>
+</div>

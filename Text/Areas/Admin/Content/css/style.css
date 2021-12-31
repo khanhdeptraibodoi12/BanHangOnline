@@ -395,7 +395,7 @@ body {
 		display: none;
 	}
 	.nav-right .mode, .nav-right .avt-wrapper {
-		display: list-item;;
+		display: list-item;
 	}
 	.navbar-search {
 		display: none;
@@ -487,6 +487,7 @@ body {
 .card {
 	background: var(--main-bg-color);
 	color: var(--main-color);
+	width: auto;
 	border-radius: 10px;
 	margin-bottom: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

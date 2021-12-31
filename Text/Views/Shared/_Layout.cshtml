@@ -1,7 +1,8 @@
 ﻿@using Text.Models;
 @{ 
     Member user = (Member)Session["UserLogin"];
-    
+    List<Cart> listCart = Session["Cart"] as List<Cart>;
+
 }
 <!DOCTYPE html>
 <html>
@@ -84,7 +85,7 @@
                             @if (Session["UserLogin"] != null)
                             {
                                 <li class="top-bar-link"><img src="@Url.Content("" + user.avatar)" style="height:20px"></li>
-                                <li class="top-bar-link"><p>@user.userName</p></li>
+                                <li class="top-bar-link"><p>@user.firstName</p></li>
                             }
                             else
                             {
@@ -174,7 +175,7 @@
                                                                     <li><a href="~/Product/ShopCatolog">Catalog With Sidebar</a></li>
                                                                     <li><a href="~/Product/ShopDetail">Single Product</a></li>
                                                                     <li><a href="~/handlerCart/Cart">Cart</a></li>
-                                                                    <li><a href="~/handleCart/Check">Checkout</a></li>
+                                                                    <li><a href="@Url.Action("CheckOut","Checkout")">Checkout</a></li>
                                                                 </ul>
                                                             </div>
 
@@ -269,30 +270,34 @@
                                         </div>
                                         <div class="nav-cart-container">
                                             <div class="nav-cart-items">
-                                                
-                                                    <div class="nav-cart-item clearfix">
+                                                @if (Session["Cart"] != null)
+                                                {
+                                                    foreach (var i in listCart)
+                                                    {
+                                                        <div class="nav-cart-item clearfix">
 
-                                                        <div class="nav-cart-img">
-                                                            <a href="#">
-                                                                <img src="#" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="nav-cart-title">
-                                                            <a href="#">
-                                                                name 
-                                                            </a>
-                                                            <div class="nav-cart-price">
-                                                                <span>1 x</span>
-                                                                <span>1250.00</span>
+                                                            <div class="nav-cart-img">
+                                                                <a href="#">
+                                                                    <img src="@Url.Content(""+i.ImageItem)" alt="" style="width:40px">
+                                                                </a>
                                                             </div>
+                                                            <div class="nav-cart-title">
+                                                                <a href="#">
+                                                                    @i.NameItem
+                                                                </a>
+                                                                <div class="nav-cart-price">
+                                                                    <span>@i.Quantity</span>
+                                                                    <span>$@i.unitPrice</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="nav-cart-remove">
+                                                                <a href="@Url.Action("DeteteCart","Cart",new { id = i.IdItem })" class="remove"><i class="ui-close"></i></a>
+                                                            </div>
+                                                            
                                                         </div>
-                                                        <div class="nav-cart-remove">
-                                                            <a href="#" class="remove"><i class="ui-close"></i></a>
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                                </div> <!-- end cart items -->
+                                                    }
+                                                }
+                                                    </div> <!-- end cart items -->
 
                                             <div class="nav-cart-summary">
                                                 <span>Cart Subtotal</span>
@@ -301,7 +306,7 @@
 
                                             <div class="nav-cart-actions mt-20">
                                                 <a href="~/Cart/Cart" class="btn btn-md btn-dark"><span>View Cart</span></a>
-                                                <a href="shop-checkout.html" class="btn btn-md btn-color mt-10"><span>Proceed to Checkout</span></a>
+                                                <a href="@Url.Action("Checkout","Cart")" class="btn btn-md btn-color mt-10"><span>Proceed to Checkout</span></a>
                                             </div>
                                         </div>
                                     </li>

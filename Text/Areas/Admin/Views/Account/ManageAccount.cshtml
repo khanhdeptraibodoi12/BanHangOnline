@@ -1,0 +1,122 @@
+﻿@using Text.Models
+
+@{
+    Member member = (Member)Session["UserLogin"];
+}
+
+@{
+    ViewBag.Title = "ManageAccount";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-8 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        Thông tin tài khoản
+                    </h3>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>FirstName</th>
+                                <th>LastName</th>
+                                <th>Email</th>
+                                <th>BirthDay</th>
+                                <th>IdentityNumber</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="pagination-wrap clearfix">
+                        <p class="result-count"></p>
+                        @*   Lien ket trang*@
+                        Trang @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+                        <div class="Page">
+                            @*@Html.PagedListPager(Model, Page => Url.Action("ManageProduct", "Product", new { Page = Page }))*@
+                        </div>
+                        <style>
+                            .Page li {
+                                color: black;
+                                float: left;
+                                padding: 8px 16px;
+                                text-decoration: none;
+                                transition: background-color .3s;
+                                display: inline;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (member.userName == "admin")
+        {
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        Thêm nhân viên
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <div class="">
+                        <p>
+                            Product Name
+                            <span class="float-right"><input type="text" name="productName" /></span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            Price
+                            <span class="float-right"><input type="text" name="price" /></span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            Discount
+                            <span class="float-right"><input type="text" name="discount" /></span>
+                        </p>
+                    </div>
+                    <div class="" style="height:50px; word-wrap:break-word">
+                        <p>
+                            Description
+                            <span class="float-right"><input type="text" name="description" style="height:50px" /></span>
+                        </p>
+                    </div>
+                    <div class="" style="height:50px">
+                        <p>
+                            Quanlity
+                            <span class="float-right"><input type="text" name="quanlity" /></span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            Brand
+                            <span class="float-right"><input type="text" name="brand" /></span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            Image
+                            <span class="float-right"></span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="float-right" style="width:100px">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+

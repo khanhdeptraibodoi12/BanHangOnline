@@ -30,7 +30,7 @@ namespace Text.Controllers
                 if (User != null)
                 {
                     Session["UserLogin"] = User;
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -70,6 +70,7 @@ namespace Text.Controllers
         public ActionResult Logout()
         {
             Session.Remove("UserLogin");
+            Session.Remove("Cart");
             return RedirectToAction("Index", "Home");
         }
     }

@@ -122,13 +122,17 @@
     <Content Include="Areas\Admin\Content\css\svg-with-js.min.css" />
     <Content Include="Areas\Admin\Content\css\v4-shims.css" />
     <Content Include="Areas\Admin\Content\css\v4-shims.min.css" />
+    <Content Include="Areas\Admin\Content\favicon.png" />
     <Content Include="Areas\Admin\Content\font\fa-brands-400.svg" />
     <Content Include="Areas\Admin\Content\font\fa-regular-400.svg" />
     <Content Include="Areas\Admin\Content\font\fa-solid-900.svg" />
+    <Content Include="Areas\Admin\Content\image\BannerAdmin.jpg" />
     <Content Include="Areas\Admin\Content\image\Screenshot_1.jpg" />
     <Content Include="Areas\Admin\Content\image\Screenshot_3.jpg" />
     <Content Include="Areas\Admin\Content\js\index.js" />
     <Content Include="Areas\Admin\Content\js\mainadmin.js" />
+    <Content Include="Areas\Admin\Content\logo_dark.png" />
+    <Content Include="Areas\Admin\Content\logo_light.png" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-icons.css" />
     <Content Include="Content\css\magnific-popup.css" />
@@ -179,9 +183,10 @@
     <Content Include="Content\img\favicon.ico" />
     <Content Include="Content\img\favicon.png" />
     <Content Include="Content\img\grid_list_icons.png" />
-    <Content Include="Content\img\hero\1.jpg" />
     <Content Include="Content\img\hero\2.jpg" />
     <Content Include="Content\img\hero\3.jpg" />
+    <Content Include="Content\img\hero\4.jpg" />
+    <Content Include="Content\img\hero\5.jpg" />
     <Content Include="Content\img\hero\hero_bg.jpg" />
     <Content Include="Content\img\login\signin-image.jpg" />
     <Content Include="Content\img\login\signup-image.jpg" />
@@ -260,6 +265,9 @@
     <Content Include="Content\img\product\product-9.jpg" />
     <Content Include="Content\img\promo_2_bg.jpg" />
     <Content Include="Content\img\promo_bg.jpg" />
+    <Content Include="Content\img\shop\1.jpg" />
+    <Content Include="Content\img\shop\2.jpg" />
+    <Content Include="Content\img\shop\3.jpg" />
     <Content Include="Content\img\shop\collection_1.jpg" />
     <Content Include="Content\img\shop\collection_2.jpg" />
     <Content Include="Content\img\shop\collection_3.jpg" />
@@ -330,8 +338,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InvoinceController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductAdminController.cs" />
+    <Compile Include="Areas\Admin\Models\Encrytor.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HandlerCartController.cs" />
@@ -516,10 +528,14 @@
     <Content Include="Areas\Admin\Content\font\fa-solid-900.ttf" />
     <Content Include="Areas\Admin\Content\font\fa-solid-900.woff" />
     <Content Include="Areas\Admin\Content\font\fa-solid-900.woff2" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ManageAccount.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Invoince\ManageInvoince.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\ManageProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -541,6 +557,9 @@
     <Content Include="Views\Home\MyAccount.cshtml" />
     <Content Include="Views\Home\ChangeAccount.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Home\ListProduct.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\xacnhandonhang.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

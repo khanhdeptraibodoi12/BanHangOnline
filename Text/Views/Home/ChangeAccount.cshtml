@@ -7,8 +7,8 @@
 
 @using (Html.BeginForm("ChangeAccount","Home"))
 {
-    @Html.ValidationSummary(true, "", new { @class = "validateLogin" })
-    @Html.AntiForgeryToken()
+    @*@Html.ValidationSummary(true, "", new { @class = "validateLogin" })
+    @Html.AntiForgeryToken()*@
     <div class="password-content" style="text-align: center">
         <h1>Change Password</h1>
 
@@ -29,6 +29,8 @@
         @Html.HiddenFor(model => model.avatar)
 
         <input type="text" name="Current" placeholder="Current password" />
+        @Html.ValidationSummary(true, "", new { @class = "validateLogin" })
+        @Html.AntiForgeryToken()
         <input type="text" name="new" placeholder="new password" />
         <input type="text" name="confirm" placeholder="Confirm password" />
         <button type="submit" class="btn-submit">Change</button>

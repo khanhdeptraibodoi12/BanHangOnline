@@ -4,38 +4,57 @@
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container">
-    <table class="table" border="1">
-        <thead>
-            <tr>
-                <th scope="col">Sản Phẩm</th>
-                <th scope="col">Số Lượng</th>
-                <th scope="col">Đơn Giá</th>
-                <th scope="col">Thành Tiền</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var i in Model)
-            {
+    @if (Model.Count() > 0)
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <th scope="row">
-                        <div style=" width : 10%" >
-                            <img src=@Url.Content("" + i.ImageItem) >
-                        </div>
-                        <div style="font-size:14px ;width : 243px">
-                            <a href="@Url.Action("ShopDetail", "Product", new { id = i.IdItem })"><h6>@i.NameItem</h6></a>
-                        </div>
-                    </th>
+                    <th scope="col">Sản Phẩm</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Đơn Giá</th>
+                    <th scope="col">Thành Tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+                {
+                <tr>
+                    <td style="width:50%">
+                        <a href="@Url.Action("ShopDetail", "Product", new { id = i.IdItem })">
+                            <img src=@Url.Content("" + i.ImageItem) style="width:15%">@i.NameItem
+                        </a>
+                    </td>
                     <td>@i.Quantity</td>
                     <td>@i.unitPrice</td>
                     <td>$@String.Format("{0:0,0}", i.PriceItem)</td>
+                    <td><a href="@Url.Action("DeteteCart", "Cart", new { id = i.IdItem })" class="remove"><i class="ui-close"></i></a></td>
                 </tr>
-            }
+                }
                 <tr style="text-align:right; color:red">
                     <td colspan="2">Số Lượng Sản Phẩm : @ViewBag.quanlityItem </td>
                     <td colspan="2">Tổng Tiền : $@String.Format("{0:0,0}", ViewBag.totalPrice)</td>
                 </tr>
-            
-        </tbody>
-    </table>
+             
+            </tbody>
+        </table>
+        <a href="/Cart/Checkout" class="btn btn-md btn-color mt-10" style="float:right;"><span>Proceed to Checkout</span></a>
+    }
+    else { 
+        <h3 class="text-center">Không có sản phẩm</h3>
+    }
 </div>
+@*<style>
+    .check-out {
+        background-color: #b79d82;
+        color: white;
+        padding: 10px 20px;
+
+    }
+    .check-out {
+        text-decoration: none;
+        background-color: black;
+        color: #b79d82;
+    }
+</style>*@

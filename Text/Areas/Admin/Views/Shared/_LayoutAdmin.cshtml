@@ -1,10 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using Text.Models
+
+@{
+    Member member = (Member)Session["UserLogin"];
+ }
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>ATPro Admin</title>
+    <title>Admin Page</title>
 
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="icon" type="image/png" href="~/Areas/Admin/Content/AT-pro-logo.png" />
+    <link rel="icon" type="image/png" href="~/Areas/Admin/Content/favicon.png" />
 
     <!-- Import lib -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
@@ -25,8 +31,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <img src="~/Areas/Admin/Content/AT-pro-black.png" alt="logo" class="logo logo-light">
-                <img src="~/Areas/Admin/Content/AT-pro-white.png" alt="logo" class="logo logo-dark">
+                <img src="~/Areas/Admin/Content/logo_dark.png" alt="logo" class="logo logo-light">
+                <img src="~/Areas/Admin/Content/logo_light.png" alt="logo" class="logo logo-dark">
             </li>
         </ul>
         <!-- end nav left -->
@@ -47,7 +53,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link">
                     <i class="fas fa-bell dropdown-toggle" data-toggle="notification-menu"></i>
-                    <span class="navbar-badge">15</span>
+                    <span class="navbar-badge">1</span>
                 </a>
                 <ul id="notification-menu" class="dropdown-menu notification-menu">
                     <div class="dropdown-menu-header">
@@ -236,47 +242,51 @@
                 <div class="avt dropdown">
                     <img src="~/Areas/Admin/Content/Avatar.jpg" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
                     <ul id="user-menu" class="dropdown-menu">
-                        <li class="dropdown-menu-item">
-                            <a class="dropdown-menu-link">
-                                <div>
-                                    <i class="fas fa-user-tie"></i>
-                                </div>
-                                <span>Profile</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-menu-item">
-                            <a href="#" class="dropdown-menu-link">
-                                <div>
-                                    <i class="fas fa-cog"></i>
-                                </div>
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-menu-item">
-                            <a href="#" class="dropdown-menu-link">
-                                <div>
-                                    <i class="far fa-credit-card"></i>
-                                </div>
-                                <span>Payments</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-menu-item">
-                            <a href="#" class="dropdown-menu-link">
-                                <div>
-                                    <i class="fas fa-spinner"></i>
-                                </div>
-                                <span>Projects</span>
-                            </a>
-                        </li>
-                        <li class="dropdown-menu-item">
-                            <a href="#" class="dropdown-menu-link">
-                                <div>
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </div>
-                                <span>Logout</span>
-                            </a>
-                        </li>
-                    </ul>
+                        @if (Session["UserLogin"] != null)
+                        {
+                            @*<li class="dropdown-menu-item">
+                                <a class="dropdown-menu-link">
+                                    <div>
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <span>Profile</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-menu-item">
+                                <a href="#" class="dropdown-menu-link">
+                                    <div>
+                                        <i class="fas fa-cog"></i>
+                                    </div>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-menu-item">
+                                <a href="#" class="dropdown-menu-link">
+                                    <div>
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                    <span>Payments</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-menu-item">
+                                <a href="#" class="dropdown-menu-link">
+                                    <div>
+                                        <i class="fas fa-spinner"></i>
+                                    </div>
+                                    <span>Projects</span>
+                                </a>
+                            </li>*@
+                            <li class="dropdown-menu-item">
+                                <a href="@Url.Action("logOut", "LoginAdmin")" class="dropdown-menu-link">
+                                    <div>
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </div>
+                                    <span>Logout</span>
+
+                                </a>
+                            </li>
+                            }                       
+                        </ul>
                 </div>
             </li>
         </ul>
@@ -287,37 +297,37 @@
     <div class="sidebar">
         <ul class="sidebar-nav">
             <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link">
+                <a href="@Url.Action("Index", "Admin" ,new {Id = member.roleId})" class="sidebar-nav-link active">
                     <div>
-                        <i class="fas fa-tachometer-alt"></i>
+                        <i class="fas fa-house-user"></i>
                     </div>
                     <span>
-                        Dashboard
+                        Trang chính
                     </span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link active">
+                <a href="@Url.Action("ManageAccount", "Account")" class="sidebar-nav-link">
                     <div>
                         <i class="fas fa-user"></i>
                     </div>
-                    <span>Thành viên</span>
+                    <span>Quản lý tài khoản</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link">
+                <a href="@Url.Action("ManageProduct", "ProductAdmin")" class="sidebar-nav-link">
                     <div>
                         <i class="fas fa-tasks"></i>
                     </div>
-                    <span>Morbi</span>
+                    <span>Quản lý sản phẩm</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
                 <a href="#" class="sidebar-nav-link">
                     <div>
-                        <i class="fas fa-spinner"></i>
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
-                    <span>Praesent</span>
+                    <span>Quản lý đặt hàng</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
@@ -325,7 +335,7 @@
                     <div>
                         <i class="fas fa-check-circle"></i>
                     </div>
-                    <span>Pellentesque</span>
+                    <span>None</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
@@ -333,7 +343,7 @@
                     <div>
                         <i class="fas fa-bug"></i>
                     </div>
-                    <span>Morbi</span>
+                    <span>None</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
@@ -341,7 +351,7 @@
                     <div>
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <span>Praesent</span>
+                    <span>None</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
@@ -349,7 +359,7 @@
                     <div>
                         <i class="fas fa-book-open"></i>
                     </div>
-                    <span>Pellentesque</span>
+                    <span>None</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
@@ -357,7 +367,7 @@
                     <div>
                         <i class="fas fa-adjust"></i>
                     </div>
-                    <span>Morbi</span>
+                    <span>None</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
@@ -365,23 +375,26 @@
                     <div>
                         <i class="fab fa-algolia"></i>
                     </div>
-                    <span>Praesent</span>
+                    <span>None</span>
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link">
-                    <div>
-                        <i class="fas fa-audio-description"></i>
-                    </div>
-                    <span>Pellentesque</span>
-                </a>
+                @if (Session["UserLogin"] != null)
+                {
+                    <a href="@Url.Action("logOut", "LoginAdmin")" class="sidebar-nav-link">
+                        <div>
+                            <i class="fas fa-sign-out"></i>
+                        </div>
+                        <span>Thoát</span>
+                    </a>
+                }
             </li>
         </ul>
     </div>
     <!-- end sidebar -->
     <!-- main content -->
     @RenderBody()
-    <div class="row">
+    @*<div class="row">
         <div class="col-3 col-m-6 col-sm-6">
             <div class="counter bg-primary">
                 <p>
@@ -580,7 +593,7 @@
             </div>
         </div>
     </div>
-    </div>
+    </div>*@
     <!-- end main content -->
     <!-- import script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>

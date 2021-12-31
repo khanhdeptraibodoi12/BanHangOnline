@@ -12,10 +12,12 @@ namespace Text.Controllers
 {
     public class HomeController : Controller
     {
+        
         // GET: Home
         menfashionEntities db = new menfashionEntities();
         public ActionResult Index()
         {
+            
             return View();
         }
         public ActionResult AboutUs()
@@ -79,5 +81,11 @@ namespace Text.Controllers
             
         }
 
+        public ActionResult ListProduct()
+        {
+            var product = db.Products.OrderBy(m => m.dateCreate).Take(8).ToList();
+            return View(product);
+        }
+        
     }
 }
