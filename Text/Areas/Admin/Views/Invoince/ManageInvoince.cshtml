@@ -1,8 +1,71 @@
-﻿
+﻿@using Text.Models
+@using PagedList.Mvc
+@model  PagedList.PagedList<Invoince>
 @{
     ViewBag.Title = "ManageInvoince";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ManageInvoince</h2>
+<div class="wrapper">
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        Đơn đặt hàng
+                    </h3>
+                    <a href=""><i></i></a>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>InvoinceNo</th>
+                                <th>Date order</th>
+                                <th>Total Money</th>
+                                <th>UserName Order</th>                                  
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>@i.invoinceNo</td>
+                                    <td>@i.dateOrder</td>
+                                    <td>@i.totalMoney</td>
+                                    <td>@i.userName</td>
+                                    <td>
+                                        <a href="@Url.Action("Delete","Invoince", new { invoinceNo = i.invoinceNo})" class="remove" style="text-decoration: none; color:black">X</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Detail", "Invoince", new { invoinceNo = i.invoinceNo})" style="text-decoration: none; color:black">Detail</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="pagination-wrap clearfix">
+                        <p class="result-count"></p>
+                        @*   Lien ket trang*@
+                        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+                        <div class="Page">
+                            @Html.PagedListPager(Model, Page => Url.Action("ManageInvoince", "Invoince", new { Page = Page }))
+                        </div>
+                        <style>
+                            .Page li {
+                                color: black;
+                                float: left;
+                                padding: 8px 16px;
+                                text-decoration: none;
+                                transition: background-color .3s;
+                                display: inline;
+                            }
+                        </style>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 

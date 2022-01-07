@@ -1,0 +1,77 @@
+﻿@model Text.Models.Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card" style="width:auto">
+                <div class="card-header">
+                    <h3>
+                        Chi tiết sản phẩm
+                    </h3>
+                    <a href="@Url.Action("ManageProduct", "ProductAdmin")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                <div class="card-content">
+                    <div class="" style="">
+                        <p>
+                            <b>Product Name</b>
+                            <span class="float-right">@Model.productName</span>
+                        </p>                       
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Price</b>
+                            <span class="float-right">@Model.price</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Discount</b>
+                            <span class="float-right">@Model.discount</span>
+                        </p>
+                    </div>                   
+                    <div class="">
+                        <p>
+                            <b>Quanlity</b>
+                            <span class="float-right">@Model.quanlity</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Brand</b>
+                            <span class="float-right">@Model.brand</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Day create</b>
+                            <span class="float-right">@Model.dateCreate</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Category</b>
+                            <span class="float-right">@Model.ProductCategory.categoryName</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Description</b>
+                        </p>
+                        <span class="float-right">@Model.description</span>
+                    </div>
+                </div>
+            </div>          
+        </div>
+        <div >
+            <div class="card-content">
+                <div>
+                    <img src="@Url.Content("" + Model.image)" style="width:50%" class="float-md-none">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

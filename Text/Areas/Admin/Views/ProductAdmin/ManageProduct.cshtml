@@ -9,14 +9,22 @@
 
 <div class="wrapper">
     <div class="row">
-        <div class="col-8 col-m-12 col-sm-12">
+        <div class="col-12 col-m-12 col-sm-12">
             <div class="card">
                 <div class="card-header">
                     <h3>
                         Sản phẩm
                     </h3>
-                    <i class="fas fa-ellipsis-h"></i>
-                </div>
+
+                    <form class="navbar-search">
+                        @using (Html.BeginForm("ManageProduct", "ProductAdmin", FormMethod.Get))
+                        {
+                            <input type="search" name="Search" class="navbar-search-input" placeholder="What you looking for...">
+                            <i class="fas fa-search"></i>
+                        }
+                    </form>
+                    <a href="@Url.Action("Save", "ProductAdmin")"><i>Create New</i></a>
+                </div>               
                 <div class="card-content">
                     <table>
                         <thead>
@@ -25,7 +33,7 @@
                                 <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Discount</th>
-                                @*<th>Description</th>*@
+                                <th>Description</th>
                                 <th>Quanlity</th>
                                 <th>Brand</th>
                                 <th>Day create</th>
@@ -38,16 +46,19 @@
                             {
                                 <tr>
                                     <td>@i.productId</td>
-                                    <td>@i.productName</td>
+                                    <td><a href="@Url.Action("Detail", "ProductAdmin", new { Id = i.productId })" style="text-decoration: none; color:black">@i.productName</a></td>
                                     <td>@i.price</td>
                                     <td>@i.discount</td>
-                                    @*<td>@i.description</td>*@
+                                    <td>@i.description</td>
                                     <td>@i.quanlity</td>
                                     <td>@i.brand</td>
                                     <td>@i.dateCreate</td>
                                     <td><image src="@Url.Content(""+i.image)" width="100px" /></td>
                                     <td>
                                         <a href="@Url.Action("Delete","ProductAdmin", new { Id = i.productId})" class="remove" style="text-decoration: none; color:black">X</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "ProductAdmin", new { Id = i.productId})" style="text-decoration: none; color:black">Edit</a>
                                     </td>
                                 </tr>
                             }
@@ -73,65 +84,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-4 col-m-12 col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3>
-                        Quản lý sản phẩm
-                    </h3>
-                </div>
-                <div class="card-content">
-                    <div class="">
-                        <p>
-                            Product Name
-                            <span class="float-right"><input type="text" name="productName" /></span>
-                        </p>
-                    </div>
-                    <div class="">
-                        <p>
-                            Price
-                            <span class="float-right"><input type="text" name="price" /></span>
-                        </p>
-                    </div>
-                    <div class="">
-                        <p>
-                            Discount
-                            <span class="float-right"><input type="text" name="discount" /></span>
-                        </p>
-                    </div>
-                    <div class="" style="height:50px; word-wrap:break-word">
-                        <p>
-                            Description
-                            <span class="float-right"><input type="text" name="description" style="height:50px" /></span>
-                        </p>
-                    </div>
-                    <div class="" style="height:50px">
-                        <p>
-                            Quanlity
-                            <span class="float-right"><input type="text" name="quanlity" /></span>
-                        </p>
-                    </div>
-                    <div class="">
-                        <p>
-                            Brand
-                            <span class="float-right"><input type="text" name="brand" /></span>
-                        </p>
-                    </div>
-                    <div class="">
-                        <p>
-                            Image
-                            <span class="float-right"></span>
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <button type="submit">ADD</button>
-                        <button type="submit">EDIT</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>       
     </div>
 </div>
  

@@ -1,0 +1,79 @@
+﻿@using Text.Models
+@*@model IEnumerable<Product>*@
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card" style="width:auto">
+                <div class="card-header">
+                    <h3>
+                        Thêm mới sản phẩm
+                    </h3>
+                    <a href="@Url.Action("ManageProduct", "ProductAdmin")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                @using (Html.BeginForm("Save", "ProductAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "validateSave" })
+                    <div class="card-content">
+                        <div class="">
+                            <p>
+                                Product Name
+                                <span class="float-right"><input type="text" name="productName" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Price
+                                <span class="float-right"><input type="text" name="price" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Discount
+                                <span class="float-right"><input type="text" name="discount" required /></span>
+                            </p>
+                        </div>
+                        <div class="" style="height:50px; word-wrap:break-word">
+                            <p>
+                                Description
+                                <span class="float-right"><input type="text" name="description" style="height:50px" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Quanlity
+                                <span class="float-right"><input type="text" name="quanlity" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Brand
+                                <span class="float-right"><input type="text" name="brand" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Category
+                                <span class="float-right">@Html.DropDownList("categoryId", null, htmlAttributes: new { @class = "form-control" })</span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Image
+                                <span class="float-right"><input type="file" name="image" required /></span>
+                            </p>
+                        </div>
+
+                        <div>
+                            <input type="submit" id="btnSave" value="Save" style="width:70px" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

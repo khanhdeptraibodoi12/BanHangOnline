@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card" style="width:auto">
+                <div class="card-header">
+                    <h3>
+                        Chi tiết tài khoản
+                    </h3>
+                    <a href="@Url.Action("ManageAccount", "Account")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                <div class="card-content">
+                    <div class="">
+                        <p>
+                            <b>First Name</b>
+                            <span class="float-right">@Model.firstName</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Last Name</b>
+                            <span class="float-right">@Model.lastName</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Email</b>
+                            <span class="float-right">@Model.email</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Birthday</b>
+                            <span class="float-right">@Model.birthday</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>IdentityNumber</b>
+                            <span class="float-right">@Model.identityNumber</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Phone</b>
+                            <span class="float-right">@Model.phone</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Day of join</b>
+                            <span class="float-right">@Model.dateOfJoin</span>
+                        </p>
+                    </div>
+                    <div class="">
+                        <p>
+                            <b>Address</b>
+                            <span class="float-right">@Model.address</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="card-content">
+                <div>
+                    <img src="@Url.Content("" + Model.avatar)" style="width:20%" class="float-md-none">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

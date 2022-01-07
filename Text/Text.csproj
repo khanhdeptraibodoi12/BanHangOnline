@@ -340,6 +340,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\InvoinceController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAdminController.cs" />
@@ -537,6 +538,18 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\MemberAccount.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Save.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ProfileAccount.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\Chart.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\Revenue.cshtml" />
+    <Content Include="Areas\Admin\Views\Invoince\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductAdmin\Save.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ManageProduct.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

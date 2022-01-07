@@ -487,7 +487,7 @@ body {
 .card {
 	background: var(--main-bg-color);
 	color: var(--main-color);
-	width: auto;
+	width: fit-content;
 	border-radius: 10px;
 	margin-bottom: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

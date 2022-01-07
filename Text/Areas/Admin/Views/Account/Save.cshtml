@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Save";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        @*<div class="col-8 col-m-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            Sản phẩm
+                        </h3>
+                        <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="card-content">
+
+                    </div>
+                </div>
+            </div>*@
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card" style="width:auto">
+                <div class="card-header">
+                    <h3>
+                        Thêm nhân viên
+                    </h3>
+                    <a href="@Url.Action("ManageAccount", "Account")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                @using (Html.BeginForm("Save", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "validateSave" })
+                    <div class="card-content">
+                        <div class="">
+                            <p>
+                                UserName
+                                <span class="float-right"><input type="text" name="userName" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Password
+                                <span class="float-right"><input type="text" name="password" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                FirstName
+                                <span class="float-right"><input type="text" name="firstName" required /></span>
+                            </p>
+                        </div>
+                        <div class="" style="height:50px; word-wrap:break-word">
+                            <p>
+                                LastName
+                                <span class="float-right"><input type="text" name="lastName" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Email
+                                <span class="float-right"><input type="text" name="email" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                BirthDay
+                                <span class="float-right"><input type="date" name="birthDay" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                IdentityNumber
+                                <span class="float-right"><input type="text" name="identityNumber" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Phone
+                                <span class="float-right"><input type="text" name="phone" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Address
+                                <span class="float-right"><input type="text" name="address" required /></span>
+                            </p>
+                        </div>
+                        <div>
+                            <input type="submit" name="Save" value="Save" style="width:70px" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

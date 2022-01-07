@@ -1,0 +1,48 @@
+﻿@using Text.Models
+@model List<InvoinceDetail>
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        Chi tiết đơn đặt hàng
+                    </h3>
+                    <a href="@Url.Action("ManageInvoince", "Invoince")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>InvoinceNo</th>
+                                <th>Product Name</th>
+                                <th>Quanlity Product</th>
+                                <th>Unit Price</th>
+                                <th>Total Discount</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>@i.invoinceNo</td>
+                                    <td>@i.Product.productName</td>
+                                    <td>@i.quanlityProduct</td>
+                                    <td>@i.unitPrice</td>
+                                    <td>@i.totalDiscount</td>
+                                    <td>@i.totalPrice</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

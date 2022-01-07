@@ -4,11 +4,9 @@
 
 @{
     Member member = (Member)Session["UserLogin"];
-    
 }
-
 @{
-    ViewBag.Title = "ManageAccount";
+    ViewBag.Title = "MemberAccount";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -18,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        Thông tin nhân viên
+                        Thông tin khách hàng
                     </h3>
                     <form class="navbar-search">
                         @using (Html.BeginForm("ManageAccount", "Account", FormMethod.Get))
@@ -27,7 +25,6 @@
                             <i class="fas fa-search"></i>
                         }
                     </form>
-                    <a href="@Url.Action("Save", "Account")"><i>Create New</i></a>
                 </div>
                 <div class="card-content">
                     <table>
@@ -44,24 +41,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var i in Model)
+                            @foreach (var i in Model)
                             {
-                            <tr>
-                                <td><a href="@Url.Action("Detail", "Account", new { userName = i.userName })" style="text-decoration: none; color:black">@i.firstName</a></td>
-                                <td><a href="@Url.Action("Detail", "Account", new { userName = i.userName})" style="text-decoration: none; color:black">@i.lastName</a></td>
-                                <td>@i.email</td>
-                                <td>@i.birthday.Value.ToShortDateString()</td>
-                                <td>@i.identityNumber</td>
-                                <td>@i.phone</td>
-                                <td>@i.dateOfJoin</td>
-                                <td>@i.address</td>
-                                <td>
-                                    <a href="@Url.Action("Delete", "Account", new { userName = i.userName })" class="remove" style="text-decoration: none; color:black">X</a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Edit", "Account", new { userName = i.userName})" style="text-decoration: none; color:black">Edit</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><a href="@Url.Action("Detail", "Account", new { userName = i.userName })" style="text-decoration: none; color:black">@i.firstName</a></td>
+                                    <td><a href="@Url.Action("Detail", "Account", new { userName = i.userName})" style="text-decoration: none; color:black">@i.lastName</a></td>
+                                    <td>@i.email</td>
+                                    <td>@i.birthday.Value.ToShortDateString()</td>
+                                    <td>@i.identityNumber</td>
+                                    <td>@i.phone</td>
+                                    <td>@i.dateOfJoin</td>
+                                    <td>@i.address</td>
+                                    <td>
+                                        <a href="@Url.Action("Delete", "Account", new { userName = i.userName })" class="remove" style="text-decoration: none; color:black">X</a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Account", new { userName = i.userName})" style="text-decoration: none; color:black">Edit</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -88,4 +85,3 @@
         </div>
     </div>
 </div>
-

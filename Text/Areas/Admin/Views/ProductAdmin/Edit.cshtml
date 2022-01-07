@@ -1,0 +1,85 @@
+﻿@using Text.Models
+@model Text.Models.Product
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card" style="width:auto">
+                <div class="card-header">
+                    <h3>
+                        Chỉnh sửa sản phẩm
+                    </h3>
+                    <a href="@Url.Action("ManageProduct", "ProductAdmin")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                @using (Html.BeginForm("Edit", "ProductAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "validateEdit" })
+            <div class="card-content">
+                <div class="">
+                    <p>
+                        Product Id
+                        <span class="float-right">@Html.DisplayFor(model => model.productId) @Html.HiddenFor(model => model.productId)</span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        Product Name
+                        <span class="float-right"><input type="text" name="productName" value="@Model.productName" required /></span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        Price
+                        <span class="float-right"><input type="text" name="price" value="@Model.price" required /></span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        Discount
+                        <span class="float-right"><input type="text" name="discount" value="@Model.discount" required /></span>
+                    </p>
+                </div>
+                <div class="" style="height:50px; word-wrap:break-word">
+                    <p>
+                        Description
+                        <span class="float-right"><input type="text" name="description" style="height:50px; word-wrap:break-word" value="@Model.description" required /></span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        Quanlity
+                        <span class="float-right"><input type="text" name="quanlity" value="@Model.quanlity" required /></span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        Brand
+                        <span class="float-right"><input type="text" name="brand" value="@Model.brand" required /></span>
+                    </p>
+                </div>
+                <div class="">
+                    <p>
+                        Category
+                        <span class="float-right">@Html.DropDownList("categoryId", null, htmlAttributes: new { @class = "form-control" })</span>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <span class="float-left"><input type="image" src="@Url.Content(""+ @Model.image)" width="100" height="120" /></span>
+                        <span class="float-right"><input type="file" name="image" /></span>
+                    </p>
+                </div>
+                <div>
+                    <input type="submit" id="btnEdit" value="Edit" style="width:70px" />
+                </div>
+            </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

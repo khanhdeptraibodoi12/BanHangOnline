@@ -24,7 +24,7 @@ namespace Text.Areas.Admin.Controllers
                 var userName = form["UserName"];
                 var passWord = form["PassWord"];
                 passWord = Encrytor.MD5Hash(passWord);
-                var account = db.Members.Where(model => model.userName == userName && model.password == passWord).SingleOrDefault();
+                var account = db.Members.Where(model => model.userName == userName && model.password == passWord && (model.roleId == 1 || model.roleId == 2)).SingleOrDefault();
                 if(account != null)
                 {
                     Session["UserLogin"] = account;

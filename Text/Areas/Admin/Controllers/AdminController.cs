@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Text.Models;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Text.Areas.Admin.Controllers
 {
@@ -18,6 +19,9 @@ namespace Text.Areas.Admin.Controllers
             return View();
         }
 
-
+        public ActionResult ProfileAccount()
+        {
+            return View();
+        }      
     }
 }

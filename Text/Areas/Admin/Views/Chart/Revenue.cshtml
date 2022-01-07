@@ -1,0 +1,44 @@
+﻿@using Text.Models
+@model List<vDoanhThuTheoNgay>
+@{
+    ViewBag.Title = "Revenue";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        Doanh thu
+                    </h3>
+                    <a href="@Url.Action("Chart", "Chart")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day Order</th>
+                                <th>Income</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                            <tr>
+                                <td>@i.dateOrder</td>
+                                <td>@i.income</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", "Account", new { dateOrder = i.dateOrder })" class="remove" style="text-decoration: none; color:black">X</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

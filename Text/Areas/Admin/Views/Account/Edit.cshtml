@@ -1,0 +1,91 @@
+﻿@using Text.Models
+@model Text.Models.Member
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-4 col-m-12 col-sm-12">
+            <div class="card" style="width:auto">
+                <div class="card-header">
+                    <h3>
+                        Chỉnh sửa sản phẩm
+                    </h3>
+                    <a href="@Url.Action("ManageAccount", "Account")"><i class="fas fa-sign-out"></i></a>
+                </div>
+                @using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "validateEdit" })
+                    <div class="card-content">
+                        <div class="">
+                            <p>
+                                UserName
+                                <span class="float-right"> @Html.DisplayFor(model => model.userName) @Html.HiddenFor(model => model.userName)</span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Password
+                                <span class="float-right"><input type="text" name="password" value="@Model.password" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                FirstName
+                                <span class="float-right"><input type="text" name="firstName" value="@Model.firstName" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                LastName
+                                <span class="float-right"><input type="text" name="lastName" value="@Model.lastName" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Email
+                                <span class="float-right"><input type="text" name="email" value="@Model.email" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Birthday
+                                <span class="float-right"> @Html.TextBoxFor(m => m.birthday, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })</span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                IdentityNumber
+                                <span class="float-right"><input type="text" name="identityNumber" value="@Model.identityNumber" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Phone
+                                <span class="float-right"><input type="text" name="phone" value="@Model.phone" required /></span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Date of Join
+                                <span class="float-right">@Html.DisplayFor(model => model.dateOfJoin) @Html.HiddenFor(model => model.dateOfJoin)</span>
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                Address
+                                <span class="float-right"><input type="text" name="address" value="@Model.address" required /></span>
+                            </p>
+                        </div>
+                        <div>
+                            <input type="submit" id="btnEdit" value="Edit" style="width:70px" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
