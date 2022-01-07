@@ -19,7 +19,7 @@ namespace Text.Controllers
         public ActionResult ShopCatalog(int? page, int? Id, string brand, string searching)
         {
             // bien quy dinh so san pham moi trang
-            int pageSize = 3;
+            int pageSize = 9;
             // bien so trang
             int pageNum = (page ?? 1);
             ViewBag.brand = brand;

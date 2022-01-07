@@ -360,6 +360,7 @@
     <Compile Include="Models\Contact.cs">
       <DependentUpon>Mydb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\createKey.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>Mydb.tt</DependentUpon>
     </Compile>

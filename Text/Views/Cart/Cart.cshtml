@@ -5,56 +5,151 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    @if (Model.Count() > 0)
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Sản Phẩm</th>
-                    <th scope="col">Số Lượng</th>
-                    <th scope="col">Đơn Giá</th>
-                    <th scope="col">Thành Tiền</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var i in Model)
-                {
-                <tr>
-                    <td style="width:50%">
-                        <a href="@Url.Action("ShopDetail", "Product", new { id = i.IdItem })">
-                            <img src=@Url.Content("" + i.ImageItem) style="width:15%">@i.NameItem
-                        </a>
-                    </td>
-                    <td>@i.Quantity</td>
-                    <td>@i.unitPrice</td>
-                    <td>$@String.Format("{0:0,0}", i.PriceItem)</td>
-                    <td><a href="@Url.Action("DeteteCart", "Cart", new { id = i.IdItem })" class="remove"><i class="ui-close"></i></a></td>
-                </tr>
-                }
-                <tr style="text-align:right; color:red">
-                    <td colspan="2">Số Lượng Sản Phẩm : @ViewBag.quanlityItem </td>
-                    <td colspan="2">Tổng Tiền : $@String.Format("{0:0,0}", ViewBag.totalPrice)</td>
-                </tr>
-             
-            </tbody>
-        </table>
-        <a href="/Cart/Checkout" class="btn btn-md btn-color mt-10" style="float:right;"><span>Proceed to Checkout</span></a>
-    }
-    else { 
-        <h3 class="text-center">Không có sản phẩm</h3>
-    }
-</div>
-@*<style>
-    .check-out {
-        background-color: #b79d82;
-        color: white;
-        padding: 10px 20px;
+<section class="page-title text-center bg-light">
+    <div class="container relative clearfix">
+        <div class="title-holder">
+            <div class="title-text">
+                <h1 class="uppercase">Shopping Cart</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Shop</a>
+                    </li>
+                    <li class="active">
+                        Cart
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Cart -->
+<section class="section-wrap shopping-cart">
+    <div class="container relative">
+        <div class="row">
 
-    }
-    .check-out {
-        text-decoration: none;
-        background-color: black;
-        color: #b79d82;
-    }
-</style>*@
+            <div class="col-md-12">
+                <div class="table-wrap mb-30">
+                    @if (Model.Count > 0)
+                    {
+                        <table class="shop_table cart table">
+                            <thead>
+                                <tr>
+                                    <th class="product-name" colspan="2">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal" colspan="2">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                    <tr class="cart_item">
+                                        <td class="product-thumbnail">
+                                            <a href="@Url.Action("ShopDetail", "Product", new { id = i.IdItem })">
+                                                <img src="@Url.Content(""+i.ImageItem)" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            <a href="@Url.Action("ShopDetail", "Product", new { id = i.IdItem })">@i.NameItem</a>
+                                            <ul>
+                                                <li>Size: XL</li>
+                                                <li>Color: White</li>
+                                            </ul>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="amount">$@String.Format("{0:0,0}", i.PriceItem)</span>
+                                        </td>
+                                        <td class="product-quantity">
+                                            <p> @i.Quantity <p>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="amount">$@String.Format("{0:0,0}", i.PriceTotal)</span>
+                                        </td>
+                                        <td class="product-remove">
+                                            <a href="@Url.Action("DeteteCart", "Cart", new { id = i.IdItem })" class="remove" title="Remove this item">
+                                                <i class="ui-close"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h3 class="text-center">Không có sản phẩm</h3>
+                    }
+                </div>
+
+                <div class="row mb-50">
+
+                    <div class="col-md-7">
+                        <div class="actions">
+                            @*<input type="submit" name="update_cart" value="Update Cart" class="btn btn-lg btn-stroke">*@
+                            <div class="wc-proceed-to-checkout">
+                                <a href="@Url.Action("Checkout","Cart")" class="btn btn-lg btn-dark"><span>proceed to checkout</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="cart_totals">
+                    <h2 class="heading relative bottom-line full-grey uppercase mb-30">Cart Totals</h2>
+
+                    <table class="table shop_table">
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>Cart Subtotal</th>
+                                <td>
+                                    <span class="amount">$@String.Format("{0:0,0}", ViewBag.totalPrice)</span>
+                                </td>
+                            </tr>
+                            <tr class="shipping">
+                                <th>Shipping</th>
+                                <td>
+                                    <span>Free Shipping</span>
+                                </td>
+                            </tr>
+                            <tr class="order-total">
+                                <th>Order Total</th>
+                                <td>
+                                    <strong><span class="amount">$@String.Format("{0:0,0}", ViewBag.totalPrice)</span></strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div> <!-- end col cart totals -->
+
+        </div> <!-- end row -->
+
+
+    </div> <!-- end container -->
+</section> <!-- end cart -->
+<!-- Newsletter -->
+<section class="newsletter" id="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h4>Get the latest updates</h4>
+                <form class="relative newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email">
+                    <input type="submit" class="btn btn-lg btn-dark newsletter-submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

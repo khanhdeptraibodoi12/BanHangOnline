@@ -175,7 +175,7 @@
                                                                     <li><a href="~/Product/ShopCatolog">Catalog With Sidebar</a></li>
                                                                     <li><a href="~/Product/ShopDetail">Single Product</a></li>
                                                                     <li><a href="~/handlerCart/Cart">Cart</a></li>
-                                                                    <li><a href="@Url.Action("CheckOut","Checkout")">Checkout</a></li>
+                                                                    <li><a href="@Url.Action("Checkout","Cart")">Checkout</a></li>
                                                                 </ul>
                                                             </div>
 
@@ -286,7 +286,7 @@
                                                                     @i.NameItem
                                                                 </a>
                                                                 <div class="nav-cart-price">
-                                                                    <span>@i.Quantity</span>
+                                                                    <span>x @i.Quantity</span>
                                                                     <span>$@i.unitPrice</span>
                                                                 </div>
                                                             </div>

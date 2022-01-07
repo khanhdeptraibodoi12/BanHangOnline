@@ -1,31 +1,151 @@
 ﻿@using Text.Models
 @{ Member member = (Member)Session["UserLogin"];
+    List<Cart> carts = Session["Cart"] as List<Cart>;
 }
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Checkout</h2>
-
-<div class="container">
-    <h3>BILLDING DETAILS</h3>
-    <div class="row account-content">
-        @Html.BeginForm()
-        {
-        <div class="col-md-6">
-            <p>FIRST NAME</p>
-            <input type="text" name="firstName" value="@member.firstName" />
-            <p>LAST NAME</p>
-            <input type="text" name="lastName" value="@member.lastName" />
-            <p>ADDRESS</p>
-            <input type="text" name="address"value="@member.address" />
-            <p>PHONE</p>
-            <input type="text" name="phone"value="@member.phone" />
-            <p>EMAIL</p>
-            <input type="email" name="email"value="@member.email" />
-            <input type="submit"  class="btn btn-md btn-color mt-10" value="Submit Order" />
+<section class="page-title text-center bg-light">
+    <div class="container relative clearfix">
+        <div class="title-holder">
+            <div class="title-text">
+                <h1 class="uppercase">Shopping Cart</h1>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="~/Home/Index">Home</a>
+                    </li>
+                    <li>
+                        <a href="~/handlerCart/Checkout">Shop</a>
+                    </li>
+                    <li class="active">
+                        Cart
+                    </li>
+                </ol>
+            </div>
         </div>
-        }
     </div>
-</div>
+</section>
+<!-- Checkout -->
+<section class="section-wrap checkout pb-70">
+    <div class="container relative">
+        <div class="row">
+
+            <div class="ecommerce col-xs-12">
+
+                @using (Html.BeginForm())
+                {
+
+                    <div class="col-md-8" id="customer_details">
+                        <div>
+                            <h2 class="heading uppercase bottom-line full-grey mb-30">billing address</h2>
+
+
+
+                            <p class="form-row form-row-first validate-required ecommerce-invalid ecommerce-invalid-required-field" id="billing_first_name_field">
+                                <label for="billing_first_name">
+                                    First Name
+                                </label>
+                                <input type="text" name="firstName" value="@member.firstName" />
+                            </p>
+
+                            <p class="form-row form-row-last validate-required ecommerce-invalid ecommerce-invalid-required-field" id="billing_last_name_field">
+                                <label for="billing_last_name">
+                                    Last Name
+                                </label>
+                                <input type="text" name="lastName" value="@member.lastName" />
+                            </p>
+
+                            <p class="form-row form-row-wide address-field validate-required ecommerce-invalid ecommerce-invalid-required-field" id="billing_address_1_field">
+                                <label for="billing_address_1">
+                                    Address
+                                </label>
+                                <input type="text" name="address" value="@member.address" />
+                            </p>
+
+                            <p class="form-row form-row-first validate-required validate-email" id="billing_email_field">
+                                <label for="billing_email">
+                                    Email Address
+
+                                </label>
+                                <input type="email" name="email" value="@member.email" />
+                            </p>
+
+                            <p class="form-row form-row-last validate-required validate-phone" id="billing_phone_field">
+                                <label for="billing_phone">
+                                    Phone
+
+                                </label>
+                                <input type="text" name="phone" value="@member.phone" />
+                            </p>
+
+                            <div class="clear"></div>
+
+                        </div>
+
+                    </div> <!-- end col -->
+                    <!-- Your Order -->
+                    <div class="col-md-4">
+                        <div class="order-review-wrap ecommerce-checkout-review-order" id="order_review">
+                            <h2 class="heading uppercase bottom-line full-grey">Your Order</h2>
+                            <table class="table shop_table ecommerce-checkout-review-order-table">
+
+                                <tbody>
+                                    @foreach (var i in carts)
+                                    {
+                                        <tr>
+                                            <th>@i.NameItem<span class="count"> x @i.Quantity</span></th>
+                                            <td>
+                                                <span class="amount">$@String.Format("{0:0,0}", i.PriceTotal)</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                    <tr class="cart-subtotal">
+                                        <th>Cart Subtotal</th>
+                                        <td>
+                                            <span class="amount">$@String.Format("{0:0,0}", ViewBag.totalPrice)</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="shipping">
+                                        <th>Shipping</th>
+                                        <td>
+                                            <span>Free Shipping</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th><strong>Order Total</strong></th>
+                                        <td>
+                                            <strong><span class="amount">$@String.Format("{0:0,0}", ViewBag.totalPrice)</span></strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+                            <div class="form-row place-order">
+                                <input type="submit" name="ecommerce_checkout_place_order" class="btn btn-lg btn-dark" id="place_order" value="Check Out">
+                            </div>
+
+                        </div>
+                    </div> <!-- end order review -->
+                }
+
+            </div> <!-- end ecommerce -->
+
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section> <!-- end checkout -->
+<!-- Newsletter -->
+<section class="newsletter" id="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h4>Get the latest updates</h4>
+                <form class="relative newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email">
+                    <input type="submit" class="btn btn-lg btn-dark newsletter-submit" value="Subscribe">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
